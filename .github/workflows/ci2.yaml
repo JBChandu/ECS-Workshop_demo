@@ -22,11 +22,11 @@ jobs:
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
         with:
-          region: ${{ secrets.AWS_REGION }}  # Explicitly set the region
+          region: ${{ secrets.AWS_REGION }}
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dog:${{ github.sha }} -f ../../cats/Dockerfile ../../cats/
+          docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dog:${{ github.sha }} -f ../../dogs/Dockerfile ../../dogs/
 
       - name: Push Docker image to ECR
         run: |
