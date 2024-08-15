@@ -21,6 +21,8 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
         with:
           region: ${{secrets.AWS_REGION}}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - name: Build Docker image
         run: |
           docker build -t ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.${{secrets.AWS_REGION}}.amazonaws.com/cat:${{github.sha}} .
