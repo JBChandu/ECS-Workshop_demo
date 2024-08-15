@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd dogs
+          cd ../../dogs
           docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/dog:${{ github.sha }} .
 
       - name: Push Docker image to ECR
